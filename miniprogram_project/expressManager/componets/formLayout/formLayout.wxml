@@ -1,0 +1,3 @@
+<view class="form-layout">
+	<slot></slot>
+</view>

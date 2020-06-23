@@ -1,0 +1,221 @@
+web服务器搭建
+//入口层
+global.__basename = __dirname;
+
+//导入配置
+
+global.sequelize = require(__basename + '/db/connection.js');
+
+//导入所有模型
+
+//导入express
+
+//导入body-parser模块
+
+//导入白名单
+
+//导入路由
+
+//创建express实例
+
+//设置静态目录
+
+//设置解析post请求体
+//将请求题解析为json格式
+app.use(bodyParser.json({
+
+  //限制请求体大小, 'xxxkb', 3mb
+  limit: config.requestBodyOptions.limit
+}));
+
+//extended: false可以接受任何数据类型，true: 可以接受字符串或者数组
+app.use(bodyParser.urlencoded({
+  extended: false,
+  limit: config.requestBodyOptions.limit
+}))
+
+
+//CORS 跨域资源共享
+//app.all(*)表示所有请求路径必须经过
+app.all('*', (req, res, next) => {
+
+  //允许跨域地址
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+
+  //*表示允许所有域请求，在实际开发中，一般指定允许某个域请求，如上面设置
+  // res.header("Access-Control-Allow-Origin", "*");
+
+  //如果浏览器请求包括Access-Control-Request-Headers字段，则Access-Control-Allow-Headers字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在"预检"中请求的字段。
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+  //该字段必需，它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。注意，返回的是所有支持的方法，而不单是浏览器请求的那个方法。这是为了避免多次"预检"请求。
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+
+  //该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可
+  res.header('Access-Control-Allow-Credentials', true);
+
+  //允许通过
+  next();
+
+});
+
+//验证跨域地址是否载白名单
+app.use((req, res, next) => {
+  //跨域白名单验证
+  if (whileList.hostList.indexOf(req.headers.origin) === -1) {
+    return res.send({msg: '请求域不合法'});
+  }
+
+  //允许通过
+  next();
+})
+
+//加载路由
+router(app);
+
+//监听端口
+app.listen(config.serverOptions.port, () => {
+  
+})
+
+
+
+==================
+路由
+一个路由只能有一个返回值
+
+==================
+
+创建model
+    1 继承Sequelize模块Model方法,即Sequelize.Model;
+    2 创建数据表 数据类型 是否为空 主键 自动递增 默认值 描述 
+    3 配置   模型名 是否添加时间戳属性 是否开启假删除 自动设置字段为蛇型 是否禁止修改表名 表名 连接实例
+    4 Code.sync({force: false});
+        //force: true, 如果存在该表，则先删除该表，再创建新表，否则直接创建新表
+        //force: false, 如果存在该表，则不创建新表，否则创建新表
+
+==================
+
+加密字符串  
+    1 md5 加密值 crypto模块
+
+==================
+
+发送邮件
+    1 配置 主机 端口 secure 身份验证
+    2 发送邮件 sendMail方法 参数: from发邮件地址 to收邮件地址 subject邮件主题I text/html邮件内容
+
+==================
+
+将cookie转换成普通对象
+    1 split方法 空对象
+    2 遍历 新对象
+
+==================
+
+生成token
+    1 jsonwebtoken模块 sign方法 data: 被签名字符串 salt: 加盐 expireIn: 过期时间
+
+==================
+
+解析token
+    1 jsonwebtoken模块 verify方法 参数token字符串 加盐 回调函数(err, decoded)
+
+==================
+
+添加数据
+    1 模型 create方法 参数: 创建的数据
+
+==================
+
+查询数据
+    1 模型 findAll方法 参数: where条件 attributes字段 order排序 offset偏移 limit限制量
+
+==================
+
+更新数据
+    1 模型 update方法 参数: 需要设置的数据 条件
+
+==================
+
+删除数据
+    1 模型 destroy方法 参数: 条件
+
+==================
+
+查询数据表记录数
+    1 模型 count方法 参数: 条件
+
+==================
+
+原始查询
+    sequelize数据库实例 query方法 参数: 原始sql语句 sql语句预处理字段 type: sequelize.QueryTypes.SELECT
+
+==================
+
+验证码中间键
+    1 白名单
+    2 where: 有效性控制字段 req.body
+    3 判断通过
+
+==================
+
+token中间键
+    1 白名单
+    2 获取token的缓存值
+    3 解析token, 判断通过
+    4 将userId传递给下一个中间件或者路由的req请求对象
+==================
+
+发送邮箱验证码
+    1 给code表添加字段
+
+==================
+
+注册
+    1 验证码中间键是否通过
+    2 查询该邮箱是否被注册 Business表 主键
+    3 Business表添加数据
+
+==================
+
+添加商品类型
+    1 生成id 时间戳 标识
+    1 添加数据
+    2 返回数据至前端 res.send
+==================
+
+编辑商品类型
+    1 编辑数据
+    2 返回数据至前端 res.send
+
+==================
+
+获取商品类型数据
+    1 查找数据
+    2 返回数据至前端 res.send
+
+==================
+
+获取数据表的记录数
+    1 查找数据记录数
+    2 返回数据至前端 res.send
+
+==================
+
+
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================
+==================

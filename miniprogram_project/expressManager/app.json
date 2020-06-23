@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/personInfo/personInfo",
+    "pages/packageInfo/packageInfo",
+    "pages/msg/msg",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#9c9898",
+    "selectedColor": "#272727",
+    "backgroundColor": "#e8e8e8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "寄快递",
+        "iconPath": "assets/1-1.png",
+        "selectedIconPath": "assets/1-0.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "查快递",
+        "iconPath": "assets/2-1.png",
+        "selectedIconPath": "assets/2-0.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "type": "./componets/type/type",
+    "list": "./componets/list/list",
+    "borderIcon": "./componets/borderIcon/borderIcon",
+    "_list": "./componets/_list/_list",
+    "formLayout": "./componets/formLayout/formLayout",
+    "pageTitle": "./componets/pageTitle/pageTitle",
+    "mp-msg": "/miniprogram_npm/weui-miniprogram/msg/msg",
+    "mp-halfScreenDialog": "/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
+}

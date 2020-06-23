@@ -1,0 +1,9 @@
+.border-icon {
+  padding: 0 0.5em;
+  border-radius: 3em;
+  margin-right: 14rpx;
+}
+
+.last {
+  margin-right: 0;
+}

@@ -1,0 +1,14 @@
+<!-- <view class="person-info {{last ? 'last' : ''}}"> -->
+<view class="_list {{item.last ? 'last' : ''}} {{item.first ? 'first' : ''}}">
+	<view class="icon" style="background:{{item.background}}">
+		<slot name="icon"></slot>
+	</view>
+	<view class="content-inner-layout">
+		<view class="title">
+			<slot name="title"></slot>
+		</view>
+		<view class="content">
+			<slot name="content"></slot>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,90 @@
+<view class="package-info">
+	<mp-halfScreenDialog show="{{show}}" closabled="{{false}}">
+		<view slot="desc">
+			<view class="tab-inner-layout" style="height:{{tabHeight*(days.length*2)}}rpx;">
+				<view wx:for="{{days}}" class="tab">
+					<view class="day {{ index === currentSelectedDayIndex ? 'active' : ''}}" bindtap="switchActive" data-type="currentSelectedDayIndex" data-index="{{index}}">{{item}}</view>
+					<view class="date-outer-layout" bind:touchmove="moveHandle" bind:touchstart="startHandle" wx:if="{{currentSelectedDayIndex===index}}">
+						<view class="date-inner-layout" style="transform: translateY({{diff}}rpx)">
+							<view class="date {{ _index === currentSelectedDateIndex && item === days[0] ? 'active' : ''}}" wx:for="{{dates}}" wx:for-item="_item" wx:for-index="_index" data-type="currentSelectedDateIndex" data-index="{{_index}}">
+								{{_item}}
+							</view>
+						</view>
+					</view>
+				</view>
+
+			</view>
+		</view>
+
+	</mp-halfScreenDialog>
+	<pageTitle>快件信息填写</pageTitle>
+	<formLayout>
+
+		<view class="_list-inner-layout" bindtap="navigatorPersonInfo" data-type="寄件人">
+			<_list item="{{persons[0]}}">
+				<view slot="icon">寄</view>
+				<view slot="title">
+					寄件人信息
+				</view>
+				<view slot="content">
+					请输入您的真实信息
+				</view>
+			</_list>
+		</view>
+		<view class="_list-inner-layout" bindtap="navigatorPersonInfo" data-type="收件人">
+			<_list item="{{persons[1]}}">
+				<view slot="icon">收</view>
+				<view slot="title">
+					收件人信息
+				</view>
+				<view slot="content">
+					请输入收件人的真实信息
+				</view>
+			</_list>
+		</view>
+	</formLayout>
+
+	<formLayout>
+		<list>
+			<view slot="left">
+				<text>寄件方式</text>
+			</view>
+			<view slot="right" style="display:flex; align-items: center;">
+				<borderIcon item="{{borderIcons[0]}}"></borderIcon>
+			</view>
+		</list>
+		<list>
+			<view slot="left">寄件类型</view>
+			<view slot="right">
+				{{type}}
+			</view>
+		</list>
+
+		<list>
+			<view slot="left">期望上门时间</view>
+			<view slot="right" bindtap="showMpHalfScreenDialog">{{dates[currentSelectedDateIndex]}}</view>
+		</list>
+	</formLayout>
+
+	<formLayout>
+		<list>
+			<view slot="left">保价</view>
+			<view slot="right" bindtap="navigateToMsg">未保价物品最高赔7倍运费, 建议保价</view>
+		</list>
+		<list>
+			<view slot="left">增值服务</view>
+			<view slot="right" bindtap="navigateToMsg">代收贷款, 签单返还, 签收确认</view>
+		</list>
+	</formLayout>
+	<view class="fixed-bottom">
+		<view class="affirm">
+			<label>
+				<radio value="r1" checked="{{checked}}" bindtap="switchChecked" />
+				确认无误, 敬请下单
+			</label>
+			<view class="button-inner-layout" bindtap="switchTabSearch">
+				<button type="primary">下单</button>
+			</view>
+		</view>
+	</view>
+</view>

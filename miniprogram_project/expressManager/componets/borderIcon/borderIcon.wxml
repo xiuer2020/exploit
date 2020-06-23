@@ -1,0 +1,3 @@
+<view class="border-icon {{item.last ? 'last' : ''}}" style="border: 2rpx solid {{item.color}};color: {{item.color}}; font-size:{{item.fontSize}};">
+	{{item.content}}
+</view>

@@ -1,0 +1,5 @@
+<view class="page-title">
+	<view class="content">
+		<slot></slot>
+	</view>
+</view>

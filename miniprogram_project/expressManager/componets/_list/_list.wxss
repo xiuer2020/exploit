@@ -1,0 +1,52 @@
+._list {
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #e8e8e8;
+  position: relative;
+  height: 152rpx;
+}
+
+._list::before,
+._list::after {
+  position: absolute;
+  content: '';
+  left: 20rpx;
+  top: 0;
+  /* background: #f00; */
+  border-left: 2rpx dotted #9c9898;
+  width: 4rpx;
+  height: 20%;
+}
+._list::after {
+  top: 120rpx;
+}
+
+.first::before{
+  display: none;
+}
+
+.last {
+  border: none;
+}
+
+.last::after {
+  display: none;
+}
+
+
+
+
+.icon {
+  padding: 4rpx 8rpx;
+  margin-right: 30rpx;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+  font-weight: 900;
+  color: #e8e8e8;
+}
+.title{
+  color: #272727;
+}
+.content{
+  color: #9c9898;
+}

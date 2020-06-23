@@ -1,0 +1,8 @@
+.page-title{
+  padding-top: 50rpx ;
+  background: #fff;
+}
+
+.content{
+  padding: 14rpx;
+}

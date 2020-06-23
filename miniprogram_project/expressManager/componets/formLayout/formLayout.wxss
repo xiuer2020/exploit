@@ -1,0 +1,5 @@
+.form-layout{
+  margin: 14rpx;
+  padding: 14rpx;
+  background: #fff;
+}

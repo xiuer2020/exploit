@@ -1,0 +1,57 @@
+@import '../../assets/global.wxss';
+.search-outer-layout{
+  margin: 14rpx 14rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+.search-inner-layout{
+  display: flex;
+  align-items: center;
+  width: 300px;
+  background: #e8e8e8;
+  border-radius: 38rpx;
+  padding-left: 38rpx;
+  padding-right: 38;
+  margin-right: 30rpx;
+}
+
+input{
+  height: 76rpx;
+}
+.icon-chazhao{
+  margin-right: 14rpx;
+}
+.icon-chazhao::before{
+  font-size: 24rpx;
+}
+/* .code-icon{
+  display: block;
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #f00;
+  margin-left: 14rpx;
+} */
+
+.search-icon{
+  display: block;
+  width: 32rpx;
+  height: 32rpx;
+  background-color: #f00;
+  margin-right: 14rpx;
+}
+.tab-inner-layout{
+  display: flex;
+  padding: 0 14rpx 8rpx;
+}
+.tab{
+  line-height: 60rpx;
+  margin-right: 30rpx;
+}
+.tab.active{
+  border-bottom: 2rpx solid #f00;
+}
+
+.content{
+  background: #e8e8e8;
+  height: 888rpx;
+}

@@ -1,0 +1,17 @@
+<view class="search">
+	<pageTitle>查快递</pageTitle>
+	<view class="search-outer-layout">
+		<view class="search-inner-layout">
+			<text class="iconfont icon-chazhao"></text>
+			<input placeholder="请输入运单号" class="search"/>
+		</view>
+		<text class="iconfont icon--wodeerweima"></text>
+	</view>
+	<view class="tab-inner-layout">
+		<view class="tab active">我寄的</view>
+		<view class="tab">我寄的</view>
+	</view>
+	<view class="content">
+		
+	</view>
+</view>

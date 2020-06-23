@@ -1,0 +1,23 @@
+<view class="index">
+	<pageTitle>顺丰速运+</pageTitle>
+	<view class="swiper-inner-layout">
+		<swiper indicator-dots="true" indicator-color="#f00" indicator-active-color="#ff0" autoplay="true" interval="5000" duration="500" circular="true">
+			<swiper-item wx:for="{{swiperItem}}">
+				<image src="{{item}}" mode="wideFix" class="swiper-image"></image>
+			</swiper-item>
+		</swiper>
+	</view>
+	<view class="type-outer-layout">
+		<view class="type-inner-layout">
+			<type wx:for="{{showItems}}" item="{{item}}" bind:toItemPage="toItemPage">
+				<view slot="icon" class="iconfont {{item.icon}}"></view>
+				<view slot="title">{{item.title}}</view>
+				<view slot="description">{{item.description}}</view>
+			</type>
+		</view>
+		<view class="more-inner-layout" bindtap="showMore">
+			<text>{{moreText}}</text>
+			<text class="iconfont {{moreIcon}}"></text>
+		</view>
+	</view>
+</view>

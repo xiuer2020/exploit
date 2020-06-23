@@ -1,0 +1,22 @@
+.list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  border-bottom: 2rpx solid #e8e8e8;  
+  padding-bottom: 14rpx;
+}
+.left{
+  color: #7d7979;
+  display: flex;
+  align-items: center;
+}
+
+.right{
+  display: flex;
+  color: #9c9898;
+}
+.last{
+  border: none;
+  padding-bottom: 0;
+}

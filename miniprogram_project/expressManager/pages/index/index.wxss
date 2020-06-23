@@ -1,0 +1,33 @@
+@import '../../assets/global.wxss';
+.index{
+  background-color: #e8e8e8;
+  padding-bottom: 120rpx;
+}
+.swiper-image{
+  width: 100%;
+}
+.type-outer-layout{
+  position: relative;
+  margin: 60rpx 32rpx 0;
+  padding-bottom: 80rpx;
+  background: #fff;
+  border-radius: 32rpx;
+}
+
+.type-inner-layout{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: inherit;
+}
+type{
+  width: 50%;
+}
+.more-inner-layout{
+  position: absolute;
+  bottom: 0rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #9c9898;
+  font-size: 26rpx;
+  font-weight: 400;
+}

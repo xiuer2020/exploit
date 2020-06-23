@@ -1,0 +1,60 @@
+.package-info {
+  background: #e8e8e8;
+  min-height: 100vh;
+}
+
+
+
+
+
+mp-halfScreenDialog .dialog--weui-half-screen-dialog{
+  padding: 0;
+}
+mp-halfScreenDialog .dialog--weui-half-screen-dialog__ft{
+  display: none;
+}
+mp-halfScreenDialog .dialog--weui-half-screen-dialog__hd{
+  display: none;
+}
+
+.tab-inner-layout{
+  overflow: hidden;
+}
+
+
+.day{
+  padding: 60rpx 120rpx 60rpx 60rpx;
+  background: #e8e8e8;
+}
+.day.active{
+  background: #fff;
+}
+
+.date-outer-layout{
+  position: absolute;
+  left: 240rpx;
+  top: 0;
+  width: 100%;
+  background: #fff;
+}
+.date{
+  padding: 30rpx 60rpx;
+  color: #272727;
+}
+.date.active{
+  color: #f00;
+}
+.fixed-bottom {
+  position: fixed;
+  left: 0%;
+  bottom: 0;
+  height: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width: 100%;
+}
+button{
+  margin-top: 30rpx;
+}

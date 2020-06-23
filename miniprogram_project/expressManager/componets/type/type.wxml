@@ -1,0 +1,13 @@
+<view class="type {{item.class}}" data-id="{{id}}" data-type="item.title" bindtap="onTap">
+	<view class="icon">
+		<slot name="icon"></slot>
+	</view>
+	<view class="info">
+		<view class="title">
+			<slot name="title"></slot>
+		</view>
+		<view class="description">
+			<slot name="description"></slot>
+		</view>
+	</view>
+</view>

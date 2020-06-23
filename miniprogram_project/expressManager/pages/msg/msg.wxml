@@ -1,0 +1,15 @@
+<view class="msg">
+	<pageTitle>操作反馈</pageTitle>
+
+	<view class="mp-msg-inner-layout">
+		<mp-msg type="{{msg.type}}" title="{{msg.title}}">
+			<view slot="desc">{{msg.desc}}
+			</view>
+			<view slot="handle">
+				<button class="weui-btn" type="primary">
+					<navigator delta="1" open-type="navigateBack" url="msg.url">返回上一页</navigator>
+				</button>
+			</view>
+		</mp-msg>
+	</view>
+</view>
