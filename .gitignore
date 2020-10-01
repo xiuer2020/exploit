@@ -1,0 +1,28 @@
+# .DS_Store文件用来存储这个文件夹的显示属性的：比如文件图标的摆放位置。
+.DS_Store
+# 多层目录下 node_modules
+/**/node_modules
+
+# 多层目录下 dist
+/**/dist
+
+# 预设igore
+/ignore
+
+# local env files 本地环境文件
+.env.local
+.env.*.local
+
+# Log files 本地日志文件
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files 编辑器目录和文件
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
