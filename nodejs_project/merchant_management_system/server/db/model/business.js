@@ -37,7 +37,7 @@ Business.init({
   },
 
   //商家昵称
-  nickname: {
+  nickName: {
     type: Sequelize.STRING(20),
     allowNull: false,
     //默认值
@@ -53,7 +53,7 @@ Business.init({
     comment: '商家邮箱'
   },
 
-  password: {
+  passWord: {
     type: Sequelize.STRING(32),
     allowNull: false,
     //默认值
