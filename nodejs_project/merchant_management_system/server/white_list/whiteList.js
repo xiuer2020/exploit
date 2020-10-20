@@ -21,13 +21,5 @@ exports.tokenList = [
   '/type',
   '/typeRows',
   '/searchRows',
-  '/userInfo',
-  '/proType',
-  '/postProduct',
-  '/productList',
-  '/productListRows',
-  '/status',
-  '/removeProduct',
-  '/productByPid',
-  '/editProduct'
+  '/businessInfo',
 ]
