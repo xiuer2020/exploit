@@ -1,0 +1,42 @@
+.base-flex{
+  display: flex;
+}
+.jcc{
+  justify-content: center;
+}
+.jcfs{
+  justify-content: flex-start;
+}
+.jcfe{
+  justify-content: flex-end;
+}
+.jcsa{
+  justify-content: space-around;
+}
+.jcsb{
+  justify-content: space-between;
+}
+.fxww{
+  flex-wrap: wrap;
+}
+.fxwn{
+  flex-wrap: nowrap;
+}
+.fxwwr{
+  flex-wrap: wrap-reverse;
+}
+.aic{
+  align-items: center;
+}
+.aib{
+  align-items: baseline;
+}
+.aife{
+  align-items: flex-end;
+}
+.aifs{
+  align-items: flex-start;
+}
+.ais{
+  align-items: stretch;
+}
