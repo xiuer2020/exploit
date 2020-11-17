@@ -1,5 +1,4 @@
-<view class="page-title">
-	<view class="content">
-		<slot></slot>
-	</view>
+<view class="page-title" bindtap="bindtapHandle">
+	<text wx:if="{{return}}" class="iconfont icon-fanhui"></text>
+	<slot></slot>
 </view>

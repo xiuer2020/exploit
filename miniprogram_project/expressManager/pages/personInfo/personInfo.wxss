@@ -1,12 +1,3 @@
-@import '../../assets/global.wxss';
-
-.person-info {
-  background: #e8e8e8;
-  min-height: 100vh;
-}
-
-
-
 mp-halfScreenDialog .dialog--weui-half-screen-dialog {
   padding: 0;
 }
@@ -19,79 +10,134 @@ mp-halfScreenDialog .dialog--weui-half-screen-dialog__hd {
   display: none;
 }
 
-.mp-halfScreenDialog-title-inner-layout {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 30rpx;
-  margin: 30rpx 0 40rpx;
-  color: #272727;
+
+.person-info .form-layout .weui-cell:before {
+  top: 100%;
+  border-top: 3px solid #e8e8e8;
+}
+
+.person-info .form-layout .weui-cell:before:first-child {
+  display: block;
 }
 
 
-.search-inner-layout {
-  display: flex;
-  height: 80rpx;
-  padding: 0 40rpx;
-  margin: 0 30rpx;
-  border-radius: 40rpx;
-  align-items: center;
+
+/* weui兼容 */
+
+
+.person-info {
   background: #e8e8e8;
+  min-height: 100vh;
 }
 
-.search {
-  color: #dadada;
+.person-info .form-layout {
+  padding: 8px;
 }
 
-.icon-chazhao {
-  margin-right: 14rpx;
+.person-info .form-layout .icon {
+  padding: 2px 4px;
+  margin-right: 16px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #e8e8e8;
+  position: relative;
 }
 
-.icon-chazhao::before {
-  font-size: 24rpx;
+.person-info .form-layout .icon.red{
+  background: #ff0000;
+}
+
+.person-info .form-layout .icon.black{
+  background: #000;
+}
+
+
+.person-info .form-layout .name {
+  flex: 2;
+}
+
+.person-info .form-layout .phone {
+  flex: 3;
+}
+
+.person-info .site-entrance {
+  color: #808080;
+}
+
+.person-info .site-entrance.confirmed{
+  color: #000;
+}
+
+/* 基本信息填写 */
+
+
+.person-info .half-screen-dialog-desc {
+  padding: 16px;
+}
+
+.person-info .half-screen-dialog-desc .search-icon{
+  flex: 1;
+  text-align: center;
+}
+
+.person-info .half-screen-dialog-desc .search {
+  flex: 9;
+}
+
+.person-info .half-screen-dialog-desc .result-inner-layout {
+  position: absolute;
+  left: 0;
+  top: 42px;
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  background: #fff;
+  z-index: 1;
+}
+.person-info .half-screen-dialog-desc .result-inner-layout .result{
+  line-height: 50px;
+  height: 50px;
+  border-bottom: 1px solid #ddd;
+}
+
+.person-info .half-screen-dialog-desc .icon-chazhao::before {
+  font-size: 12px;
   color: #9c9898;
 }
 
-.tag-outer-layout {
-  margin: 30rpx 0;
-  padding: 0 30rpx;
-
-}
-
-.tag-title {
+.person-info .half-screen-dialog-desc .tag-title {
   color: #9c9898;
-  margin-bottom: 30rpx;
-  font-size: 24rpx;
+  margin-bottom: 16px;
+  font-size: 12px;
 }
 
-.tag-inner-layout {
-  display: flex;
-  flex-wrap: wrap;
-  color: #272727;
-}
-
-.tag {
-  font-size: 24rpx;
+.person-info .half-screen-dialog-desc .tag {
+  font-size: 12px;
   width: 22%;
   text-align: center;
   box-sizing: border-box;
-  padding: 10rpx 0;
-  border: 4rpx solid #dadada;
-  border-radius: 46rpx;
+  padding: 6px 0;
+  border: 2px solid #dadada;
+  border-radius: 14px;
   margin-right: 4%;
 }
-.tag:nth-child(-n+4){
-  margin-bottom: 30rpx;
+
+.person-info .half-screen-dialog-desc .tag:nth-child(-n+4) {
+  margin-bottom: 16px;
 }
-.tag:nth-child(4n) {
+
+.person-info .half-screen-dialog-desc .tag:nth-child(4n) {
   margin-right: 0;
 }
 
-.fill-in {
+.person-info .half-screen-dialog-desc .fill-in {
   position: relative;
-  padding: 30rpx 0;
+  margin-top: 16px;
+  padding: 16px 0;
 }
 
-.fill-in::before {
+.person-info .half-screen-dialog-desc .fill-in::before {
   content: '';
   position: absolute;
   top: 0;
@@ -100,75 +146,41 @@ mp-halfScreenDialog .dialog--weui-half-screen-dialog__hd {
   border-top: 2px solid #e8e8e8;
 }
 
-.site-title-inner-layout {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30rpx;
-  padding: 0 40rpx;
-}
 
-.site-title{
+.site-title {
   flex: 1;
   text-align: center;
   color: #272727;
   font-weight: 900;
 }
 
-.site-outer-layout {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 40rpx;
-  position: relative;
-  overflow: hidden;
-  color: #9c9c9c;
-  margin-bottom: 30rpx;
-
-}
-
-.site-outer-layout::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 80rpx;
-  width: 100%;
-  border-top: 2rpx solid #dadada;
-  border-bottom: 2rpx solid #dadada;
-}
-.site-inner-layout{
-  flex: 1;
-}
-.site{
-  line-height: 80rpx;
+.site {
+  line-height: 40px;
   text-align: center;
 }
-.site.active{
+
+.site.active {
   color: #f00;
 }
-.list-outer-layout {
-  display: flex;
-}
 
-.name {
-  flex: 3;
-  margin-right: 30rpx;
-}
-
-.phone {
-  flex: 7;
-}
-
-.fixed-bottom {
+.person-info .confirm {
   position: fixed;
   left: 0%;
   bottom: 0;
-  height: 200rpx;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #fff;
   width: 100%;
 }
-button{
-  margin-top: 30rpx;
+
+/* 操作反馈组件 */
+
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
 }

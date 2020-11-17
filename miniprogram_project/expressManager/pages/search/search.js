@@ -1,10 +1,25 @@
 // pages/search/search.js
 Page({
+  search: function (e) {
+    let searchOrders = this.data.sentedOrders.filter(x => {
+      return x.number.indexOf(e.detail.value) !== -1
+    })
+    this.setData({
+      searchOrders
+    })
+
+  },
 
   /**
    * 页面的初始数据
    */
   data: {
+    searchValue: "",
+    // 搜索值
+    searchOrders: null,
+    // 搜索到订单
+    sentedOrders: null
+    // 发送的订单
 
   },
 
@@ -26,7 +41,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      sentedOrders: wx.getStorageSync("sentedOrders")
+    })
   },
 
   /**

@@ -1,17 +1,33 @@
-<view class="search">
-	<pageTitle>查快递</pageTitle>
-	<view class="search-outer-layout">
-		<view class="search-inner-layout">
-			<text class="iconfont icon-chazhao"></text>
-			<input placeholder="请输入运单号" class="search"/>
-		</view>
-		<text class="iconfont icon--wodeerweima"></text>
-	</view>
+<view class="search app-page">
+	<pageTitle return="{{false}}">查快递</pageTitle>
+
+	<baseFlex supplement="background: #e8e8e8; border-radius: 38rpx;">
+		<text class="iconfont icon-chazhao search-icon"></text>
+		<input placeholder="请输入运单号" class="search-input" bindinput="search" model:value="{{searchValue}}" />
+		<text class="iconfont icon--wodeerweima search-icon"></text>
+	</baseFlex>
+
 	<view class="tab-inner-layout">
-		<view class="tab active">我寄的</view>
-		<view class="tab">我寄的</view>
+		<text class="tab active">我寄的</text>
+		<!-- <text class="tab">我收的</text> -->
 	</view>
-	<view class="content">
-		
+	<view class="content bg-mask">
+		<view class="order" wx:for="{{searchOrders && searchValue ? searchOrders : sentedOrders}}">
+			<view class="title">
+				<text class="iconfont icon-xingxing"></text> 运单号：{{item.number}}
+			</view>
+			<baseFlex jc="jcsa" supplement="background:#fff; height: 80px;">
+				<view class="info">
+					<view class="site">{{item.senderSite}}</view>
+					<view class="name">{{item.senderName}}</view>
+				</view>
+				<view class="iconfont icon-changjiantou to">
+				</view>
+				<view class="info">
+					<view class="site">{{item.addresseeSite}}</view>
+					<view class="name">{{item.addresseeName}}</view>
+				</view>
+			</baseFlex>
+		</view>
 	</view>
 </view>

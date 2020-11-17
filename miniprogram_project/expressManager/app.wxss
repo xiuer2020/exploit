@@ -1,0 +1,22 @@
+@import './miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+/* weui样式文件 */
+@import './assets/global.wxss';
+/* 全局样式文件 */
+
+.app-page {
+  padding-top: 128rpx;
+  position: relative;
+  padding-left: 14rpx;
+  padding-right: 14rpx;
+}
+
+.bg-mask::before {
+  content: '';
+  position: absolute;
+  left: -14rpx;
+  right: -14rpx;
+  top: 0;
+  height: 100%;
+  background-color: #e8e8e8;
+  z-index: -1;
+}

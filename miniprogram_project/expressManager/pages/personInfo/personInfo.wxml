@@ -1,102 +1,96 @@
-<!-- black #272727
-// gray  #9c9898
-// max_white #fff
-// nomal_white #e8e8e8
-// min_white #dadada -->
-<!-- http://www.kuaidi100.com/autonumber/autoComNum?text=快递单号 -->
-<view class="person-info">
-	<view class="mp-half-screen-dialog-inner-layout">
-		<mp-halfScreenDialog show="{{show}}" closabled="{{true}}">
-			<view slot="desc">
-				<view class="mp-halfScreenDialog-title-inner-layout">
-					<view class="title">城市地区</view>
-					<text class="iconfont icon-guanbi" bindtap="switchShow"></text>
+<view class="person-info app-page">
+	<mp-halfScreenDialog show="{{show}}" closabled="{{true}}">
+		<view slot="desc" class="half-screen-dialog-desc">
+			<baseFlex jc="jcsb">
+				<view class="title">城市地区</view>
+				<view class="iconfont icon-guanbi" bindtap="comfirmSite"></view>
+			</baseFlex>
+			<baseFlex
+				supplement="border-radius: 40rpx;background: #e8e8e8; height: 80rpx; margin: 30rpx 0 40rpx; position: relative; ">
+				<text class="iconfont icon-chazhao search-icon"></text>
+				<input placeholder="请输入省份/城市/市区搜索" placeholder-style="color: #a7a2a2;" bindinput="search" model:value="{{searchValue}}" class="search"></input>
+				<view class="result-inner-layout" wx:if="{{searchResult &&  searchValue}}">
+					<view class="result" wx:for="{{searchResult}}" bindtap="comfirmSite" data-value="{{item}}">{{item}}</view>
 				</view>
-				<view class="search-inner-layout">
-					<text class="iconfont icon-chazhao"></text>
-					<input placeholder="请输入省份/城市/市区搜索" placeholder-style="color: #a7a2a2;"></input>
-				</view>
-				<view class="tag-outer-layout">
-					<view class="tag-title">热门城市</view>
-					<view class="tag-inner-layout">
-						<view class="tag" wx:for="{{hotCitys}}">
-							{{item}}
-						</view>
-					</view>
-				</view>
-				<view class="fill-in">
-					<view class="site-title-inner-layout">
-						<view wx:for="{{siteTitle}}" class="site-title">
-							{{item}}
-						</view>
-					</view>
-					<view class="site-outer-layout" style="height:{{siteHeight*3*2}}rpx">
-						<view class="site-inner-layout province" bindtouchstart="touchstartHandle" bindtouchmove="touchmoveHandle" data-type="province" style="transform: translateY({{provinceDiff}}rpx)">
-							<view class="site {{-siteHeight * 2*(index+1) < provinceDiff && -siteHeight*index*2 >= provinceDiff ? 'active' : ''}}" wx:for="{{sites}}" bindtap="switchIndex" data-type="Province" data-index="{{index}}">{{item.name}}</view>
-						</view>
-						<view class="site-inner-layout city" data-type="city" bindtouchstart="touchstartHandle" bindtouchmove="touchmoveHandle" style="transform: translateY({{cityDiff}}rpx)">
-							<view class="site {{-siteHeight *2* (index+1) < cityDiff && -siteHeight*index*2 >= cityDiff ? 'active' : ''}}" wx:for="{{sites[currentSelectedProvince].city}}" bindtap="switchIndex" data-type="City" data-index="{{index}}">{{item.name}}</view>
-						</view>
-						<view class=" site-inner-layout county" data-type="county" bindtouchstart="touchstartHandle" bindtouchmove="touchmoveHandle" style="transform: translateY({{countyDiff}}rpx)">
-							<view class="site {{-siteHeight * (index+1)*2 < countyDiff && -siteHeight*index*2 >= countyDiff ? 'active' : ''}}" wx:for="{{sites[currentSelectedProvince].city[currentSelectedCity].area}}" bindtap="switchIndex" data-type="County" data-index="{{index}}">{{item}}</view>
-						</view>
-					</view>
-					<view bindtap="affirm">
-						<button type="primary">确定</button>
-					</view>
-				</view>
-			</view>
-		</mp-halfScreenDialog>
-	</view>
 
-	<pageTitle>{{type}}地址填写</pageTitle>
-	<formLayout>
-		<_list item="{{_list}}">
-			<view slot="icon" item="{{icon}}">
-				{{iconText}}
-			</view>
-			<view slot="title">
-				{{type}}
-			</view>
-		</_list>
-		<view class="list-outer-layout">
-			<view class="name list-inner-layout">
-				<list>
-					<view slot="left">
-						<input placeholder="真实姓名"></input>
-					</view>
-				</list>
-			</view>
-			<view class="phone list-inner-layout">
-				<list>
-					<view slot="left">
-						<input placeholder="电话" type="number"></input>
-					</view>
-				</list>
-			</view>
-
-		</view>
-		<view bindtap="switchShow">
-			<list>
-				<view slot="left">
-					城市 / 区域
+			</baseFlex>
+			<view class="tag-title">热门城市</view>
+			<baseFlex>
+				<view class="tag" wx:for="{{hotCitys}}" bindtap="updateIndex" data-value="{{item.pickerValue}}">
+					{{item.site}}
 				</view>
-			</list>
-		</view>
-		<list>
-			<view slot="left">
-				<input placeholder="详细地址"></input>
+			</baseFlex>
+			<view class="fill-in">
+				<baseFlex jc="jcsa" supplement="padding-bottom: 30rpx;">
+					<view wx:for="{{siteTitle}}" class="site-title">
+						{{item}}
+					</view>
+				</baseFlex>
+
+				<view class="picker-view-outer-layout" style="height: 100px; overflow: hidden; margin-bottom: 20px;">
+					<view class="picker-view-inner-layout" style="transform: translateY(-132px)">
+						<picker-view style="height: 300px;" mask-style="background:#fff0;"
+							indicator-style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd" bindchange="updateIndex" value="{{pickerValue}}">
+							<picker-view-column>
+								<view class="site {{index === provinceIndex ? 'active' : ''}}" wx:for="{{sites}}">{{item.name}}</view>
+							</picker-view-column>
+							<picker-view-column>
+								<view class="site {{index === cityIndex ? 'active' : ''}}" wx:for="{{sites[provinceIndex].city}}">
+									{{item.name}}</view>
+							</picker-view-column>
+							<picker-view-column>
+								<view class="site {{index === countyIndex ? 'active' : ''}}"
+									wx:for="{{sites[provinceIndex].city[cityIndex].area}}">{{item}}</view>
+							</picker-view-column>
+
+						</picker-view>
+					</view>
+				</view>
+
+
+				<button type="primary" class="cofirm" bindtap="comfirmSite" >确定</button>
 			</view>
-		</list>
-	</formLayout>
-	<formLayout>
-		<textarea placeholder="粘贴或输入整段地址, 点击'识别'自动拆分姓名, 电话和地址. 例如: 顺小哥, 132*****0000, 广东省深圳市某某街道某某大厦001号" placeholder-style="color: #9c9898; font-size: 21rpx;"></textarea>
-	</formLayout>
+		</view>
+	</mp-halfScreenDialog>
+	<!-- 操作反馈组件 半屏显示 -->
+
+	<pageTitle>{{type}}信息填写</pageTitle>
+	<!-- 页面标题组件 -->
+
+	<mp-cells ext-class="form-layout">
+		<mp-cell>
+			<text class="icon {{iconClass}}">{{type[0]}}</text>
+			<text>{{type}}</text>
+		</mp-cell>
+		<!-- 列表组件 -->
+		<baseFlex>
+			<view class="name">
+				<mp-cell>
+					<input type="text" placeholder="真实姓名" model:value="{{name}}" />
+				</mp-cell>
+			</view>
+			<view class="phone">
+				<mp-cell>
+					<input type="number" placeholder="电话" model:value="{{phone}}" />
+				</mp-cell>
+			</view>
+		</baseFlex>
+		<!-- 布局组件 -->
+		<mp-cell>
+			<view class="site-entrance {{site ? 'confirmed' : ''}}" data-key="show" bindtap="toggle">{{site ? site : "城市 / 地区"}}</view>
+		</mp-cell>
+		<!-- 列表组件 -->
+		<mp-cell>
+			<input type="text" placeholder="详细地址" model:value="{{detailSite}}" />
+		</mp-cell>
+		<!-- 列表组件 -->
+	</mp-cells>
+	<!-- 表单组件 -->
+
+
 	<view class="fixed-bottom">
-		<view class="affirm">
-			<button type="primary">
-				<navigator open-type="navigateBack" delta="{{1}}">下单</navigator>
-			</button>
-		</view>
+		<button type="primary" bindtap="confirmPersonInfo">
+			确定
+		</button>
 	</view>
 </view>

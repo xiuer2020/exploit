@@ -1,0 +1,17 @@
+{
+  "name": "expressmanager",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "使用weui扩展组件",
+  "dependencies": {
+    "@miniprogram-component-plus/vtabs": "^1.0.0",
+    "@miniprogram-component-plus/vtabs-content": "^1.0.0",
+    "weui-miniprogram": "^1.0.6"
+  }
+}

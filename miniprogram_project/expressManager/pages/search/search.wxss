@@ -1,57 +1,74 @@
-@import '../../assets/global.wxss';
-.search-outer-layout{
-  margin: 14rpx 14rpx 30rpx;
-  display: flex;
-  align-items: center;
-}
-.search-inner-layout{
-  display: flex;
-  align-items: center;
-  width: 300px;
-  background: #e8e8e8;
-  border-radius: 38rpx;
-  padding-left: 38rpx;
-  padding-right: 38;
-  margin-right: 30rpx;
+.search {
+  padding-left: 14rpx;
+  padding-right: 14rpx;
 }
 
-input{
+.search .search-icon {
+  flex: 1;
+  text-align: center;
+}
+
+.search .search-input {
   height: 76rpx;
+  flex: 8;
 }
-.icon-chazhao{
-  margin-right: 14rpx;
-}
-.icon-chazhao::before{
+
+.search .icon-chazhao::before {
   font-size: 24rpx;
 }
-/* .code-icon{
-  display: block;
-  width: 48rpx;
-  height: 48rpx;
-  background-color: #f00;
-  margin-left: 14rpx;
-} */
 
-.search-icon{
-  display: block;
-  width: 32rpx;
-  height: 32rpx;
-  background-color: #f00;
-  margin-right: 14rpx;
+.search .tab-inner-layout {
+  margin: 20rpx 0;
 }
-.tab-inner-layout{
-  display: flex;
-  padding: 0 14rpx 8rpx;
-}
-.tab{
-  line-height: 60rpx;
+
+.search .tab-inner-layout .tab {
   margin-right: 30rpx;
-}
-.tab.active{
-  border-bottom: 2rpx solid #f00;
+  padding-bottom: 10rpx;
 }
 
-.content{
-  background: #e8e8e8;
-  height: 888rpx;
+.search .tab-inner-layout .tab.active {
+  color: #ff0000;
+  border-bottom: 1px solid #F00;
+}
+
+.search .content {
+  position: relative;
+  min-height: 80vh;
+}
+
+.search .content .order {
+  border-radius: 8rpx;
+  margin-bottom: 30px;
+}
+
+
+.search .content .order .title {
+  color: #ffffff;
+  background: #544e4e;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  padding: 14rpx;
+}
+
+.search .content .order .info {
+  text-align: center;
+  width: 160px;
+}
+
+.search .content .order .to {
+  text-align: center;
+}
+
+.search .content .order .info .site {
+  font-weight: 900;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.search .content .order .info .name {
+  color: #ccc;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

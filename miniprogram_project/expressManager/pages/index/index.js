@@ -1,7 +1,51 @@
 const app = getApp();
 
 Page({
+  showMore: function () {
+    // 
 
+    if (this.data.showFlag) {
+      // 
+
+      this.setData({
+        showItems: this.data.types,
+        showFlag: !this.data.showFlag,
+        moreText: '收起',
+        moreIcon: 'icon-shouqi'
+      })
+    } else {
+      this.setData({
+        showItems: this.data.partItems,
+        showFlag: !this.data.showFlag,
+        moreText: '展示更多',
+        moreIcon: 'icon-xiala'
+      })
+    }
+  },
+  toItemPage: function (e) {
+    let order = {
+      type: e.detail.type,
+      model: "上门取件"
+    }
+    wx.setStorageSync('order', order)
+
+    if (e.detail.type !== '扫码寄件') {
+      wx.navigateTo({
+        url: `/pages/packageInfo/packageInfo?type=${e.detail.type}`
+      })
+    } else {
+      var msg = {
+        type: 'warn',
+        title: '操作失败',
+        desc: '扫码二维码接口尚未完成, 敬请期待',
+      }
+      msg = JSON.stringify(msg);
+      wx.navigateTo({
+        url: `/pages/msg/msg?msg=${msg}`,
+      })
+    }
+
+  },
   /**
    * 页面的初始数据
    */
@@ -11,7 +55,7 @@ Page({
     showFlag: true,
     showtypes: [],
     parttypes: [],
-    swiperItem: ['../../assets/1.jpg', '../../assets/2.jpg', '../../assets/2.jpg'],
+    swiperItem: ['../../assets/1.jpg', '../../assets/2.jpg', '../../assets/3.jpg'],
     types: [{
         icon: 'icon-jikuaidi',
         title: '寄快递',
@@ -84,8 +128,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    
+    console.log("页面加载");
+
+
     var classList = [];
 
     // types
@@ -109,21 +154,24 @@ Page({
     this.setData({
       showItems: tempShowItems,
       partItems: tempShowItems
-
     })
+    // 动态添加类名
+
+    wx.setStorageSync("sentedOrder", []);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log("服务器首次渲染完成");
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("页面显示");
 
   },
 
@@ -131,6 +179,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    console.log("页面隐藏");
 
   },
 
@@ -138,7 +187,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log("页面卸载");
   },
 
   /**
@@ -160,46 +209,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  showMore: function () {
-    // 
-
-    if (this.data.showFlag) {
-      // 
-
-      this.setData({
-        showItems: this.data.types,
-        showFlag: !this.data.showFlag,
-        moreText: '收起',
-        moreIcon: 'icon-shouqi'
-      })
-    } else {
-      this.setData({
-        showItems: this.data.partItems,
-        showFlag: !this.data.showFlag,
-        moreText: '展示更多',
-        moreIcon: 'icon-xiala'
-      })
-    }
-  },
-  toItemPage: function (e) {
-    
-    
-    if (e.detail.type !== '扫码寄件') {
-      wx.navigateTo({
-        url: `/pages/packageInfo/packageInfo?type=${e.detail.type}`
-      })
-    } else {
-      var msg = {
-        type: 'warn',
-        title: '操作失败',
-        desc: '扫码二维码接口尚未完成, 敬请期待',
-      }
-      msg = JSON.stringify(msg);
-      wx.navigateTo({
-        url: `/pages/msg/msg?msg=${msg}`,
-      })
-    }
-
   }
+
 })

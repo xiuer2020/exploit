@@ -1,0 +1,71 @@
+.insured{
+  padding-left: 14rpx;
+  padding-right: 14rpx;
+  padding-bottom: 100rpx;
+}
+
+.insured .value{
+ margin-left: 14rpx; 
+ flex: 1;
+ background: #eeeeee;
+ border-radius: 8rpx;
+ padding: 14rpx;
+ box-sizing: border-box;
+ height: 80rpx;
+}
+
+.insured .title{
+  font-weight: 900;
+  margin: 40rpx 0 30rpx;
+}
+
+.insured .rule{
+  margin-bottom: 20rpx;
+  line-height: 62rpx;
+}
+
+.insured .rule .black{
+  color: #000;
+}
+
+.insured .rule .light-red{
+  color: #f39595;   
+}
+
+.insured .rule .red{
+  color: #b70c0c;
+}
+
+.insured .rule .block{
+  display: block;
+}
+
+.insured .bottom{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffffff;
+  z-index: 1;
+}
+
+.insured .bottom .btn{
+  padding: 16rpx 48rpx;
+  border-radius: 44rpx;
+  width: 200rpx;
+  text-align: center;
+}
+
+.insured .bottom .yes{
+  background: #b70c0c;
+  color: #ffffff;
+}
+
+.insured .bottom .no{
+  border: 2rpx solid #b70c0c;
+  color: #b70c0c; 
+}

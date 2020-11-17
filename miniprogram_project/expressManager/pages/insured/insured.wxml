@@ -1,0 +1,15 @@
+<view class="app-page insured">
+  <pageTitle>物品保价</pageTitle>
+  <baseFlex jc="jcsb">
+    <view>声明价值</view>
+    <input type="number" model:value="{{insuredValue}}" placeholder="￥：1-500000的整数" class="value" />
+  </baseFlex>
+  <view class="title">保价说明</view>
+  <view class="rule" wx:for="{{paragraphs}}">
+    <text class="{{x.class}}" wx:for="{{item}}" wx:for-item="x">{{x.text}}</text>
+  </view>
+  <view class="bottom">
+    <text class="no btn" bindtap="updateInsured" data-confirm="{{false}}">不保价</text>
+    <text class="yes btn" bindtap="updateInsured" data-confirm="{{true}}">保价</text>
+  </view>
+</view>
