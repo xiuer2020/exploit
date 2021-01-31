@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/minireset.css/0.0.2/minireset.min.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+<script type="text/javascript">
+  (function () {
+    // deicePixelRatio ：设备像素
+    // var scale = 1 / devicePixelRatio;
+    //设置meta 压缩界面 模拟设备的高分辨率
+    // document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+
+    var deviceWidth = document.documentElement.clientWidth > 1050 ? 1050 : document.documentElement.clientWidth;
+    //按照667像素下字体为100px的标准来，得到一个字体缩放比例值 3.75
+    document.documentElement.style.fontSize = (deviceWidth / 3.75) + 'px';
+    
+    window.onresize = function () {
+      var deviceWidth = document.documentElement.clientWidth > 1050 ? 1050 : document.documentElement.clientWidth;
+      //按照667像素下字体为100px的标准来，得到一个字体缩放比例值 3.75
+      document.documentElement.style.fontSize = (deviceWidth / 3.75) + 'px';
+    };
+
+  })();
+</script>
+
+</html>
